@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Window JS</title>
+    <link rel="stylesheet" href="modalwindow.css">
+</head>
+
+<body>
+
+    <!-- <button onclick="openModal()"> Open Modal Window</button> -->
+    <div class="modal">
+        <div class="modal-content">
+           Paris <br>
+           Eiffel tower
+            <img src="" alt="" class="modal-img">
+            <button class="close-btn" onclick="closeModal()"> X </button>
+            <button class="prev" onclick="nextImg(-1)" > < </button>
+            <button class="next" onclick="nextImg(+1)" > > </button>
+        </div>
+    </div>
+
+    <img onclick="openImgModal(event)" class="img-item" src="https://static.toiimg.com/thumb/msid-53891743,width-748,height-499,resizemode=4,imgsize-152022/Tour-Eiffel.jpg" alt="">
+    <img onclick="openImgModal(event)" class="img-item" src="https://media.istockphoto.com/id/1317323736/photo/a-view-up-into-the-trees-direction-sky.jpg?s=612x612&w=0&k=20&c=i4HYO7xhao7CkGy7Zc_8XSNX_iqG0vAwNsrH1ERmw2Q=" alt="">
+    <img onclick="openImgModal(event)" class="img-item" src="https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=612x612&w=0&k=20&c=l15OdMWjgCKycMMShP8UK94ELVlEGvt7GmB_esHWPYE=" alt="">
+    <img onclick="openImgModal(event)" class="img-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRsYtJs2MxK0xJsA6up5IfWCmpXCfb3USBYcnQruviqCDEsQ2U3ymCpF9JFjXmGQyZWzM&usqp=CAU" alt="">
+
+    <script src="modalwindow.js"></script>
+</body>
+
+</html>

@@ -292,26 +292,88 @@
 // printFourth()
 
 //throw->callback
-function handleResult(error, result){    
-    if(error) {     // если передана ошибка 
-        console.error(error);   
-    }  
-    else {     // если асинхронная функция завершилась успешно
-        console.log("Result:", result);    
-    }  
-}
+// function handleResult(error, result){    
+//     if(error) {     // если передана ошибка 
+//         console.error(error);   
+//     }  
+//     else {     // если асинхронная функция завершилась успешно
+//         console.log("Result:", result);    
+//     }  
+// }
  
-function asyncFunction(callback) {
-    setTimeout(()=>{
-        let result = Math.floor(Math.random() * 100) + 1;
-        if(result < 50) { 
-            // если меньше 50, устанавливаем ошибку
-            callback(new Error("Некорректное значение: " + result), null);      
-        } 
-        else{
-            // в остальных случаях устанавливаем результат
-            callback(null, result);
-        }
-    }, 1000);
+// function asyncFunction(callback) {
+//     setTimeout(()=>{
+//         let result = Math.floor(Math.random() * 100) + 1;
+//         if(result < 50) { 
+//             // если меньше 50, устанавливаем ошибку
+//             callback(new Error("Некорректное значение: " + result), null);      
+//         } 
+//         else{
+//             // в остальных случаях устанавливаем результат
+//             callback(null, result);
+//         }
+//     }, 1000);
+// }
+// asyncFunction(handleResult);
+
+//promise
+// const myPromise3000 = new Promise(function(){
+//     console.log("[myPromise3000] Выполнение асинхронной операции");
+//     setTimeout(()=>console.log("[myPromise3000] Завершение асинхронной операции"), 3000);
+// });
+// const myPromise1000 = new Promise(function(){
+//     console.log("[myPromise1000] Выполнение асинхронной операции");
+//     setTimeout(()=>console.log("[myPromise1000] Завершение асинхронной операции"), 1000);
+// });
+// const myPromise2000 = new Promise(function(){
+//     console.log("[myPromise2000] Выполнение асинхронной операции");
+//     setTimeout(()=>console.log("[myPromise2000] Завершение асинхронной операции"), 2000);
+// });
+
+
+
+
+//resolve + reject
+// const x = 4;
+// const y = 0;
+// const myPromise = new Promise(function(resolve, reject){
+ 
+//     if(y === 0) {
+//         reject("Переданы некорректные данные");
+//     }
+//     else{
+//         const z = x / y;
+//         resolve(z);
+//     }
+// });
+
+function printWord(){
+    if(charTurn <= words[wordTurn].length){
+        let str = words[wordTurn].substring(0, charTurn)
+        output.innerHTML = str
+        charTurn += 1
+
+        setTimeout(printWord, 150)
+    } else{
+        // wordTurn += 1
+        // charTurn = 0
+        // if(wordTurn >= wordTurn.length){
+        //     wordTurn = 0
+        // }
+        setTimeout(deleteWord, 150)
+    }
 }
-asyncFunction(handleResult);
+function deleteWord(){
+    if(charTurn >= 0){
+        let str = words[wordTurn].substring(0,charTurn)
+        output.innerHTML = str
+        charTurn -= 1
+        setTimeout(deleteWord, 10)
+    } else{
+        wordTurn += 1
+        if(wordTurn >= words.length){
+            wordTurn = 0
+        }
+        setTimeout(printWord, 150)
+    }
+}
