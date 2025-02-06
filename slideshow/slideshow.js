@@ -5,11 +5,25 @@ const images = [
     'https://e0.pxfuel.com/wallpapers/108/142/desktop-wallpaper-nature-forest-road-and-background-dark-forest-road.jpg'
 ]
 
+
+const slideImg = document.querySelector('.slide-img')
+let slideIndex = 0
+
+showSlide()
 function nextSlide(n){
-    console.log(n)
+    // console.log(n)
+    slideIndex += n
+    showSlide(slideIndex)
 }
 
 function showSlide(index){
-    
+    if(index >= images.length){
+        slideIndex = 0
+    }
+    if(slideIndex < 0){
+        slideIndex = images.length - 1
+    }
+    // console.log(images[slideIndex])
+    slideImg.src = images[slideIndex]
 
 }
